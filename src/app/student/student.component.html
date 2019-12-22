@@ -4,11 +4,13 @@
 
 <div>
 
-  <button (click)="smth">Delete</button>
+  <button (click)="erase()">Delete</button>
 
   <br>
 
-  <table class="table table-dark">
+  <div style="width: 500px">
+
+  <table class="table table-sm">
 
     <thead>
     <tr>
@@ -22,9 +24,10 @@
 
 
     <tbody>
-    <tr *ngFor = "let item of items">
+    <tr *ngFor="let item of items">
 
-      <td> <input type = "checkbox"> </td>
+      <td> <input type="checkbox" [checked]="item.checked"
+                  (change)="item.checked = !item.checked" > </td>
       <td> {{item.id}} </td>
       <td> {{item.name}} </td>
       <td> {{item.date}} </td>
@@ -35,7 +38,7 @@
 
   </table>
 
-
+  </div>
 
 
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {StudentService} from '../services/student.service';
 
 @Component({
   selector: 'app-student',
@@ -11,12 +11,12 @@ export class StudentComponent implements OnInit {
   response: any;
   items = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private studentService: StudentService) {
     this.search();
   }
 
   search() {
-    this.http.get('http://localhost:8080/student/list')
+    this.studentService.getAll()
       .subscribe((response) => {
         this.response = response;
         this.items = this.response;
@@ -25,7 +25,17 @@ export class StudentComponent implements OnInit {
       });
   }
 
-  smth() {}
+  erase() {
+    
+    const ids: any = this.items.filter(value => value.checked)
+      .map(value => value.id);
+
+    console.log(ids);
+    this.studentService.deleteByIds(ids).subscribe(() => {
+      this.search();
+    });
+
+  }
 
 
   ngOnInit() {
