@@ -8,26 +8,23 @@ import {StudentService} from '../services/student.service';
 })
 export class StudentComponent implements OnInit {
   param: string;
-  response: any;
   items = [];
+  pageSize: number = 20;
 
   constructor(private studentService: StudentService) {
     this.search();
   }
 
   search() {
-    this.studentService.getAll()
+    this.studentService.getAll(this.items.length, this.pageSize)
       .subscribe((response) => {
-        this.response = response;
-        this.items = this.response;
-        console.log(this.response);
+        this.items += response;
       });
   }
 
   erase() {
     const ids: any = this.items.filter(value => value.checked)
       .map(value => value.id);
-
     if (confirm('Видалити "' + ids.length + '" студент(а/ів) ?')) {
       this.studentService.deleteByIds(ids).subscribe(() => {
         alert('Видалено "' + ids.length + '" студент(а/ів).');
