@@ -6,10 +6,8 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
 
-
-
-  getAll() {
-    return this.http.get('http://localhost:8080/student/get/list');
+  getAll(from: number, size: number) {
+    return this.http.get('http://localhost:8080/student/get/list/' + from + '/' + size);
   }
 
   deleteByIds(ids: any) {
