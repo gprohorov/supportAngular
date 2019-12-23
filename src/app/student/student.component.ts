@@ -18,7 +18,7 @@ export class StudentComponent implements OnInit {
   search() {
     this.studentService.getAll(this.items.length, this.pageSize)
       .subscribe((response) => {
-        this.items =[...this.items, ...response];
+        this.items = [...this.items, ...response];
       });
   }
 
