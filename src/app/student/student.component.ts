@@ -21,24 +21,19 @@ export class StudentComponent implements OnInit {
         this.response = response;
         this.items = this.response;
         console.log(this.response);
-
       });
   }
 
   erase() {
-    
     const ids: any = this.items.filter(value => value.checked)
       .map(value => value.id);
 
-    console.log(ids);
-    this.studentService.deleteByIds(ids).subscribe(() => {
-      this.search();
-    });
-
+    if (confirm('Видалити "' + ids.length + '" студент(а/ів) ?')) {
+      this.studentService.deleteByIds(ids).subscribe(() => {
+        alert('Видалено "' + ids.length + '" студент(а/ів).');
+        this.search();
+      });
+    }
   }
-
-
-  ngOnInit() {
-  }
-
+  
 }
