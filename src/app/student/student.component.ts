@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {StudentService} from '../services/student.service';
 
 @Component({
@@ -6,10 +6,10 @@ import {StudentService} from '../services/student.service';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent  {
   param: string;
   items = [];
-  pageSize: number = 20;
+  pageSize = 5;
 
   constructor(private studentService: StudentService) {
     this.search();
@@ -17,7 +17,7 @@ export class StudentComponent implements OnInit {
 
   search() {
     this.studentService.getAll(this.items.length, this.pageSize)
-      .subscribe((response) => {
+      .subscribe((response: {}[]) => {
         this.items = [...this.items, ...response];
       });
   }
