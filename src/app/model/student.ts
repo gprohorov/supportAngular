@@ -1,10 +1,6 @@
 export class Student {
-
-  id: number;
+  id?: number;
   name: string;
   dateOfBirth: string;
-  startActivity: string;
   mark: number;
-
-
 }

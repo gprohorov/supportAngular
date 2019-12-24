@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {StudentService} from '../services/student.service';
+import {Student} from '../model/student';
 
 @Component({
   selector: 'app-student',
@@ -10,8 +11,15 @@ export class StudentComponent  {
   param: string;
   items = [];
   pageSize = 5;
+  student: Student;
 
   constructor(private studentService: StudentService) {
+
+    this.student = new Student();
+    this.student.name = '';
+    this.student.dateOfBirth = '';
+    this.student.mark = 0;
+
     this.search();
   }
 
@@ -19,6 +27,14 @@ export class StudentComponent  {
     this.studentService.getAll(this.items.length, this.pageSize)
       .subscribe((response: {}[]) => {
         this.items = [...this.items, ...response];
+      });
+  }
+
+  addStudent() {
+    console.log(this.student);
+    this.studentService.addStudent(this.student)
+      .subscribe(() => {
+        this.search();
       });
   }
 

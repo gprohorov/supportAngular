@@ -1,12 +1,27 @@
-<p>
-  student component works!
-</p>
-
 <div>
+
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="student.name" />
+
+  <br />
+
+  <label>Date of birth:</label>
+  <input type="date" [(ngModel)]="student.dateOfBirth" />
+
+  <br />
+
+  <label>Mark:</label>
+  <input type="number" [(ngModel)]="student.mark" />
+
+  <br />
+
+  <button (click)="this.addStudent()">Add Student</button>
+
+  <br /><br />
 
   <button (click)="erase()">Delete</button>
 
-  <br>
+  <br />
 
   <div style="width: 500px">
 
