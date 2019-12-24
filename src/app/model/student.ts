@@ -5,4 +5,6 @@ export class Student {
   dateOfBirth: string;
   startActivity: string;
   mark: number;
+
+
 }
