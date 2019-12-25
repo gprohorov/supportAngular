@@ -1,4 +1,4 @@
-<div>
+<div style="margin: auto 25%; width: 50%; ">
 
   <label>Name:</label>
   <input type="text" [(ngModel)]="student.name" />
@@ -23,9 +23,9 @@
 
   <br />
 
-  <div style="width: 500px">
+  <div style="width: 500px; height: 200px;  overflow: auto;" >
 
-  <table class="table table-sm">
+  <table class="table table-sm"  >
 
     <thead>
     <tr>
@@ -53,9 +53,7 @@
 
   </table>
   
-  <button (click)="this.search()">More</button>
-  
   </div>
-
+  <button (click)="this.search()">More</button>
 
 </div>
