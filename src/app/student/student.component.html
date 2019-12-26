@@ -34,6 +34,7 @@
       <th scope="col">Name</th>
       <th scope="col">Date</th>
       <th scope="col">Mark</th>
+      <th scope="col"></th>
     </tr>
     </thead>
 
@@ -47,6 +48,7 @@
       <td> {{item.name}} </td>
       <td> {{item.date}} </td>
       <td> {{item.mark}} </td>
+      <td> <button (click)="edit(item)"> Edit</button> </td>
 
     </tr>
     </tbody>

@@ -48,5 +48,10 @@ export class StudentComponent  {
       });
     }
   }
-  
+
+
+
+  edit(item: Student) {
+    this.student = item;
+  }
 }
